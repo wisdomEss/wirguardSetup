@@ -1,4 +1,4 @@
-# WireGuard Host-to-Host — Scripts d’automatisation
+# WireGuard Host-to-Host - Scripts d’automatisation
 
 Ce dépôt fournit trois scripts Bash pour configurer rapidement une connexion WireGuard host-to-host sur Linux :
 - wg-clean.sh : supprime une configuration WireGuard existante.
@@ -32,7 +32,7 @@ Emplacement de configuration
 
 Description des scripts
 
-wg-clean.sh — Nettoyage complet
+wg-clean.sh - Nettoyage complet
 - Objectif : supprimer une ancienne configuration WireGuard pour repartir proprement.
 - Actions :
   - Arrêt de l’interface (wg-quick down wg0)
@@ -41,7 +41,7 @@ wg-clean.sh — Nettoyage complet
 - Usage :
   sudo ./wg-clean.sh
 
-wg-setup.sh — Création et activation d’une configuration locale
+wg-setup.sh - Création et activation d’une configuration locale
 - Objectif : générer les clés, créer la configuration locale et activer wg0.
 - Actions :
   - Génération d’une paire de clés (privée/publique)
@@ -53,7 +53,7 @@ wg-setup.sh — Création et activation d’une configuration locale
 - Exemple :
   sudo ./wg-setup.sh 10.10.10.1/24
 
-wg-peer.sh — Ajout d’un peer distant
+wg-peer.sh - Ajout d’un peer distant
 - Objectif : ajouter un peer dans la configuration et appliquer immédiatement les changements.
 - Actions :
   - Ajout d’une section [Peer] dans /etc/wireguard/wg0.conf
@@ -65,17 +65,28 @@ wg-peer.sh — Ajout d’un peer distant
   sudo ./wg-peer.sh "qwertyuiop1234567890=" "10.10.10.2/32" "203.0.113.15:51820"
 
 Exemples complets (Host A ↔ Host B)
+
 Host A:
+
   sudo ./wg-clean.sh
+
   sudo ./wg-setup.sh 10.10.10.1/32
+
   sudo ./wg-peer.sh <pubkey_B> 10.10.10.2/32 <ip_publique_B:51820>
 
+
 Host B:
+
   sudo ./wg-clean.sh
+
   sudo ./wg-setup.sh 10.10.10.2/32
+
   sudo ./wg-peer.sh <pubkey_A> 10.10.10.1/32 <ip_publique_A:51820>
 
+
+
 Tester la connectivité
+
 - Depuis A : ping 10.10.10.2
 - Depuis B : ping 10.10.10.1
 - Vérifier l’état : sudo wg show
