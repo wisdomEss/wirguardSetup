@@ -1,6 +1,5 @@
 # WireGuard Host-to-Host — Scripts d’automatisation
 
-Résumé
 Ce dépôt fournit trois scripts Bash pour configurer rapidement une connexion WireGuard host-to-host sur Linux :
 - wg-clean.sh : supprime une configuration WireGuard existante.
 - wg-setup.sh : génère une clé, crée la configuration locale et active l'interface.
