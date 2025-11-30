@@ -1,5 +1,5 @@
 #!/bin/bash
-# Nettoyage complet WireGuard
+# Nettoyage complet WireGuard si la configuration exist sur le pc
 
 IFACE="wg0"
 CONF="/etc/wireguard/${IFACE}.conf"
